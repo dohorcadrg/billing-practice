@@ -8,10 +8,63 @@
 	<BODY style="background: #ff7abd;">
 		<DIV id="page1" class="container" style="background-color: white; padding: 50px; margin-top: 50px; margin-bottom: 50px;">
 		<div>
-		<h1 class="text-center">Account Summary</h1>
-		<p style="color:red;font-weight: bold;">Total Due: $1,000</p></td>
-		</div>
 
+		<button class="btn btn-primary position-relative">Cart 
+			<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartBadgeNum">0</span>
+			<br><span class="badge badge-danger" id="cartPriceNum">$0</span></button>
+
+		<h1 class="text-center">The Awesome Store</h1>
+		<div id="placegoldmessage"></div>
+
+		<div class="row g-3 justify-content-center">
+
+		<div class="card col-sm-3 p-1 m-3">
+  			<div class="card-body text-center"><img src="images/cheetos.jpg" style="width: 100%">
+  			<span class="itemPrice">$1.25</span><br>
+  			<span class="itemName">Cheetos</span><br>
+  			<span id="itembutton1"><button class="btn btn-secondary" onclick="addItemToCart('Cheetos',1.25,1)">Add To Chart</button></span>
+  			</div>
+  		</div>
+		<div class="card col-sm-3 p-1 m-3">
+  			<div class="card-body text-center"><img src="images/doritos.jpg" style="width: 100%">
+  			<span class="itemPrice">$1.25</span><br>
+  			<span class="itemName">Doritos</span><br>
+  			<button class="btn btn-secondary" onclick="addItemToCart('Doritos',1.25)">Add To Chart</button>
+  			<div class="bg-secondary">
+  				<span class="btn btn-secondary">-</span>
+  				<span class="p-3">1</span>
+  				<span class="btn btn-secondary">+</span></div>
+  			</div>
+  		</div>
+		<div class="card col-sm-3 p-1 m-3">
+  			<div class="card-body text-center"><img src="images/ruffles.jpg" style="width: 100%">
+  			<span class="itemPrice">$1.25</span><br>
+  			<span class="itemName">Ruffle</span><br>
+  			<button class="btn btn-secondary" onclick="addItemToCart('Ruffles',1.25)">Add To Chart</button>
+  			</div>
+  		</div>
+		<div class="card col-sm-3 p-1 m-3">
+  			<div class="card-body text-center"><img src="images/chipsahoy.jpg" style="width: 100%">
+  			<span class="itemPrice">$1.50</span><br>
+  			<span class="itemName">Chips Ahoy</span><br>
+  			<button class="btn btn-secondary" onclick="addItemToCart('Chips Ahoy',1.50)">Add To Chart</button>
+  			</div>
+  		</div>
+  				<div class="card col-sm-3 p-1 m-3">
+  			<div class="card-body text-center"><img src="images/oreo.jpg" style="width: 100%">
+  			<span class="itemPrice">$1.50</span><br>
+  			<span class="itemName">Oreo</span><br>
+  			<button class="btn btn-secondary" onclick="addItemToCart('Oreo',1.50)">Add To Chart</button>
+  			</div>
+  		</div>
+
+
+  		</div>
+		
+
+
+		</div>
+<!--
 		<form id="form1" class="needs-validation was-validated" novalidate><div class="row g-3">
 		<div class="col-sm-6">
 			<label class="form-label">First Name</label><input type="text" name="first" class="form-control" required />
@@ -105,9 +158,31 @@
 
 		<button type="submit" class="btn btn-primary">Submit</button>
 		</div></form>
+-->
+
+
+
 		</DIV>
 
 		<script type="text/javascript">
+			var cartItemsNum = 0;
+			var cartPriceNum = 0;
+			let cartItemsList = [];
+			function addItemToCart(item,price,whichbutton){
+				cartItemsList.push({
+  				itemname: item,
+  				itemprice: price,
+				});
+
+				cartItemsNum++;
+				cartPriceNum = cartPriceNum + price;
+				document.getElementById('cartBadgeNum').innerHTML = cartItemsNum;
+				document.getElementById('cartPriceNum').innerHTML = "$" + cartPriceNum;
+				document.getElementById('itembutton' + whichbutton).innerHTML = "Change Button";
+				document.getElementById('placegoldmessage').innerHTML += item + price;
+
+			}
+
 		// Example starter JavaScript for disabling form submissions if there are invalid fields
 			(function () {
  				 'use strict'
@@ -133,7 +208,7 @@
 		})()
 
 			function sendpaymemt(){
-					document.getElementById("page1").innerHTML = "<div class='text-center'><h1>Account Summary</h1><p style='color:green;'>Current Due: $0</p><H3>Bill Paid! Thank you!</H3><a href='done.html'><button type='submit' class='btn btn-primary'>View Summary</button></a></div>";
+					document.getElementById("page1").innerHTML = "<div class='text-center'><h1>Account Summary</h1><p style='color:green;'>Current Due: $0</p><H3>Bill Paid! Thank you!</H3><a href='/done.html'><button type='submit' class='btn btn-primary'>View Summary</button></a></div>";
 				
 			}
 			function formatCreditCard(input){
