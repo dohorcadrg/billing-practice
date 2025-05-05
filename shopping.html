@@ -6,10 +6,12 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 	</HEAD>
 	<BODY style="background: #ff7abd;">
+	<DIV class="container">
 		<DIV id="page1" class="container" style="background-color: white; padding: 50px; margin-top: 50px; margin-bottom: 50px;">
-		<div>
+		
+		<DIV id="storefront">
 
-		<button class="btn btn-primary position-relative">Cart 
+		<button class="btn btn-primary position-relative" onclick="goToCart()">Cart 
 			<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartBadgeNum">0</span>
 			<br><span class="badge badge-danger" id="cartPriceNum">$0</span></button>
 
@@ -22,39 +24,55 @@
   			<div class="card-body text-center"><img src="images/cheetos.jpg" style="width: 100%">
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Cheetos</span><br>
-  			<span id="itembutton1"><button class="btn btn-secondary" onclick="addItemToCart('Cheetos',1.25,1)">Add To Chart</button></span>
+  				<button id="itembutton1" class="btn btn-secondary" onclick="addItemToCart('Cheetos',1.25,1)">Add To Chart</button>
+  				<div class="bg-secondary" style="display: none;" id="hiddenitembutton1">
+  				<span class="btn btn-secondary" onclick="subLessItemtoCart('Cheetos', 1)">-</span>
+  				<span class="mx-3" id="itemquant1" style="color: white">1</span>
+  				<span class="btn btn-secondary" onclick="addMoreItemtoCart('Cheetos', 1)">+</span></div>
   			</div>
   		</div>
 		<div class="card col-sm-3 p-1 m-3">
   			<div class="card-body text-center"><img src="images/doritos.jpg" style="width: 100%">
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Doritos</span><br>
-  			<button class="btn btn-secondary" onclick="addItemToCart('Doritos',1.25)">Add To Chart</button>
-  			<div class="bg-secondary">
-  				<span class="btn btn-secondary">-</span>
-  				<span class="p-3">1</span>
-  				<span class="btn btn-secondary">+</span></div>
+  				<button id="itembutton2" class="btn btn-secondary" onclick="addItemToCart('Doritos',1.25,2)">Add To Chart</button>
+  				<div class="bg-secondary" style="display: none;" id="hiddenitembutton2">
+  				<span class="btn btn-secondary" onclick="subLessItemtoCart('Doritos', 2)">-</span>
+  				<span class="mx-3" id="itemquant2" style="color: white">1</span>
+  				<span class="btn btn-secondary" onclick="addMoreItemtoCart('Doritos', 2)">+</span></div>
   			</div>
   		</div>
 		<div class="card col-sm-3 p-1 m-3">
   			<div class="card-body text-center"><img src="images/ruffles.jpg" style="width: 100%">
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Ruffle</span><br>
-  			<button class="btn btn-secondary" onclick="addItemToCart('Ruffles',1.25)">Add To Chart</button>
+  				<button id="itembutton3" class="btn btn-secondary" onclick="addItemToCart('Ruffles',1.25,3)">Add To Chart</button>
+  				<div class="bg-secondary" style="display: none;" id="hiddenitembutton3">
+  				<span class="btn btn-secondary" onclick="subLessItemtoCart('Ruffles', 3)">-</span>
+  				<span class="mx-3" id="itemquant3" style="color: white">1</span>
+  				<span class="btn btn-secondary" onclick="addMoreItemtoCart('Ruffles', 3)">+</span></div>
   			</div>
   		</div>
 		<div class="card col-sm-3 p-1 m-3">
   			<div class="card-body text-center"><img src="images/chipsahoy.jpg" style="width: 100%">
   			<span class="itemPrice">$1.50</span><br>
   			<span class="itemName">Chips Ahoy</span><br>
-  			<button class="btn btn-secondary" onclick="addItemToCart('Chips Ahoy',1.50)">Add To Chart</button>
+  				<button id="itembutton4" class="btn btn-secondary" onclick="addItemToCart('Chips Ahoy',1.50,4)">Add To Chart</button>
+  				<div class="bg-secondary" style="display: none;" id="hiddenitembutton4">
+  				<span class="btn btn-secondary" onclick="subLessItemtoCart('Chips Ahoy', 4)">-</span>
+  				<span class="mx-3" id="itemquant4" style="color: white">1</span>
+  				<span class="btn btn-secondary" onclick="addMoreItemtoCart('Chips Ahoy', 4)">+</span></div>
   			</div>
   		</div>
   				<div class="card col-sm-3 p-1 m-3">
   			<div class="card-body text-center"><img src="images/oreo.jpg" style="width: 100%">
   			<span class="itemPrice">$1.50</span><br>
   			<span class="itemName">Oreo</span><br>
-  			<button class="btn btn-secondary" onclick="addItemToCart('Oreo',1.50)">Add To Chart</button>
+  			<button id="itembutton5" class="btn btn-secondary" onclick="addItemToCart('Oreo',1.50,5)">Add To Chart</button>
+  				<div class="bg-secondary" style="display: none;" id="hiddenitembutton5">
+  				<span class="btn btn-secondary" onclick="subLessItemtoCart('Oreo', 5)">-</span>
+  				<span class="mx-3" id="itemquant5" style="color: white">1</span>
+  				<span class="btn btn-secondary" onclick="addMoreItemtoCart('Oreo', 5)">+</span></div>
   			</div>
   		</div>
 
@@ -63,7 +81,14 @@
 		
 
 
-		</div>
+		</DIV>
+
+		<DIV id="cartPage" style="display: none;">
+
+			<button class="btn btn-primary" onclick="goStoreFront()">Return To Store</button>
+			<h1 class="text-center">Your Cart</h1>
+			<p>WORK IN PROGRESS</p>
+
 <!--
 		<form id="form1" class="needs-validation was-validated" novalidate><div class="row g-3">
 		<div class="col-sm-6">
@@ -159,29 +184,91 @@
 		<button type="submit" class="btn btn-primary">Submit</button>
 		</div></form>
 -->
+		</DIV>
 
 
 
 		</DIV>
-
+	</DIV>
 		<script type="text/javascript">
-			var cartItemsNum = 0;
-			var cartPriceNum = 0;
 			let cartItemsList = [];
+
 			function addItemToCart(item,price,whichbutton){
+				
 				cartItemsList.push({
-  				itemname: item,
-  				itemprice: price,
+  				name: item,
+  				price: price,
+  				quantity: 1,
 				});
 
-				cartItemsNum++;
-				cartPriceNum = cartPriceNum + price;
+				document.getElementById('itembutton' + whichbutton).style.display = "none";
+				document.getElementById('hiddenitembutton' + whichbutton).style.display = "inline-block";
+				
+				displayitemsList();
+				displaycartbadge();
+			}
+
+			function addMoreItemtoCart(item, whichbutton){
+			document.getElementById('placegoldmessage').innerHTML = " ";
+				cartItemsList.forEach(object => {
+					if (object.name == item) {
+						object.quantity++;
+						document.getElementById('itemquant' + whichbutton).innerHTML = object.quantity;
+					}
+					displayitemsList();
+					displaycartbadge();
+				});
+			}
+			function subLessItemtoCart(item, whichbutton){
+			document.getElementById('placegoldmessage').innerHTML = " ";
+				cartItemsList.forEach((object, index) => {
+					if (object.name == item) {
+						if (object.quantity == 1) {
+							cartItemsList.splice(index, 1);
+							document.getElementById('itembutton' + whichbutton).style.display = "inline-block";
+							document.getElementById('hiddenitembutton' + whichbutton).style.display = "none";
+						} else{
+							object.quantity--;
+							document.getElementById('itemquant' + whichbutton).innerHTML = object.quantity;
+
+						}
+					}
+					displayitemsList();
+					displaycartbadge();
+					
+				});
+			}
+
+			function displayitemsList(){
+			document.getElementById('placegoldmessage').innerHTML = " ";
+			cartItemsList.forEach(object => {
+				document.getElementById('placegoldmessage').innerHTML += "[Item: " + object.name + ", Price: " + object.price + ", Quantity: " + object.quantity + "], ";
+			});
+			}
+
+			function displaycartbadge(){
+				var cartItemsNum = 0;
+				var cartPriceNum = 0;
+				cartItemsList.forEach(object => {
+					cartItemsNum = cartItemsNum + object.quantity;
+					cartPriceNum = cartPriceNum + (object.price * object.quantity);
+				});
 				document.getElementById('cartBadgeNum').innerHTML = cartItemsNum;
 				document.getElementById('cartPriceNum').innerHTML = "$" + cartPriceNum;
-				document.getElementById('itembutton' + whichbutton).innerHTML = "Change Button";
-				document.getElementById('placegoldmessage').innerHTML += item + price;
-
 			}
+
+			function goToCart(){
+				document.getElementById('storefront').style.display = "none";
+				document.getElementById('cartPage').style.display = "block";
+			}
+
+			function goStoreFront(){
+				document.getElementById('storefront').style.display = "block";
+				document.getElementById('cartPage').style.display = "none";
+			}
+
+
+
 
 		// Example starter JavaScript for disabling form submissions if there are invalid fields
 			(function () {
