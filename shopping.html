@@ -21,7 +21,7 @@
 		<div class="row g-3 justify-content-center">
 
 		<div class="card col-sm-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/cheetos.jpg" style="width: 100%">
+  			<div class="card-body text-center"><img src="images/Cheetos.jpg" style="width: 100%">
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Cheetos</span><br>
   				<button id="itembutton1" class="btn btn-secondary" onclick="addItemToCart('Cheetos',1.25,1)">Add To Chart</button>
@@ -32,7 +32,7 @@
   			</div>
   		</div>
 		<div class="card col-sm-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/doritos.jpg" style="width: 100%">
+  			<div class="card-body text-center"><img src="images/Doritos.jpg" style="width: 100%">
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Doritos</span><br>
   				<button id="itembutton2" class="btn btn-secondary" onclick="addItemToCart('Doritos',1.25,2)">Add To Chart</button>
@@ -43,7 +43,7 @@
   			</div>
   		</div>
 		<div class="card col-sm-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/ruffles.jpg" style="width: 100%">
+  			<div class="card-body text-center"><img src="images/Ruffles.jpg" style="width: 100%">
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Ruffle</span><br>
   				<button id="itembutton3" class="btn btn-secondary" onclick="addItemToCart('Ruffles',1.25,3)">Add To Chart</button>
@@ -54,7 +54,7 @@
   			</div>
   		</div>
 		<div class="card col-sm-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/chipsahoy.jpg" style="width: 100%">
+  			<div class="card-body text-center"><img src="images/Chips Ahoy.jpg" style="width: 100%">
   			<span class="itemPrice">$1.50</span><br>
   			<span class="itemName">Chips Ahoy</span><br>
   				<button id="itembutton4" class="btn btn-secondary" onclick="addItemToCart('Chips Ahoy',1.50,4)">Add To Chart</button>
@@ -65,7 +65,7 @@
   			</div>
   		</div>
   				<div class="card col-sm-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/oreo.jpg" style="width: 100%">
+  			<div class="card-body text-center"><img src="images/Oreo.jpg" style="width: 100%">
   			<span class="itemPrice">$1.50</span><br>
   			<span class="itemName">Oreo</span><br>
   			<button id="itembutton5" class="btn btn-secondary" onclick="addItemToCart('Oreo',1.50,5)">Add To Chart</button>
@@ -86,8 +86,16 @@
 		<DIV id="cartPage" style="display: none;">
 
 			<button class="btn btn-primary" onclick="goStoreFront()">Return To Store</button>
-			<h1 class="text-center">Your Cart</h1>
-			<p>WORK IN PROGRESS</p>
+			<h1 class="text-center">Your Cart <span class="badge text-bg-primary rounded-pill" id="cartPreviwItemNum">0</span></h1>
+			<div class="row g-3 justify-content-center">
+				<ul class="list-group" style="width: 20rem; margin-top: 1rem;" id="cartPreview">
+				</ul>
+			</div>
+			<div class="text-center">
+			<button class="btn btn-primary" style="margin-top: 1rem;">Pay For Items</button></div>
+		</DIV>
+
+		<DIV id="checkoutPage" style="display: none;"></DIV>
 
 <!--
 		<form id="form1" class="needs-validation was-validated" novalidate><div class="row g-3">
@@ -184,7 +192,7 @@
 		<button type="submit" class="btn btn-primary">Submit</button>
 		</div></form>
 -->
-		</DIV>
+		
 
 
 
@@ -192,6 +200,8 @@
 	</DIV>
 		<script type="text/javascript">
 			let cartItemsList = [];
+			var cartItemsNum = 0;
+			var cartPriceNum = 0;
 
 			function addItemToCart(item,price,whichbutton){
 				
@@ -247,12 +257,13 @@
 			}
 
 			function displaycartbadge(){
-				var cartItemsNum = 0;
-				var cartPriceNum = 0;
+				cartItemsNum = 0;
+				cartPriceNum = 0;
 				cartItemsList.forEach(object => {
 					cartItemsNum = cartItemsNum + object.quantity;
 					cartPriceNum = cartPriceNum + (object.price * object.quantity);
 				});
+				cartPriceNum = cartPriceNum.toFixed(2);
 				document.getElementById('cartBadgeNum').innerHTML = cartItemsNum;
 				document.getElementById('cartPriceNum').innerHTML = "$" + cartPriceNum;
 			}
@@ -260,11 +271,23 @@
 			function goToCart(){
 				document.getElementById('storefront').style.display = "none";
 				document.getElementById('cartPage').style.display = "block";
+
+				document.getElementById('cartPreviwItemNum').innerHTML = cartItemsNum;
+
+
+
+				document.getElementById('cartPreview').innerHTML = " ";
+				cartItemsList.forEach(object => {
+					document.getElementById('cartPreview').innerHTML += '<li class="list-group-item justify-content-between d-flex"><div><h5>' + object.name + ' <span class="badge text-bg-secondary">' + object.quantity + '</span></h5><img src="images/' + object.name + '.jpg" style="width: 10rem"></div><h5>$' + (object.price * object.quantity).toFixed(2) + '</h5></li>';
+				});
+				document.getElementById('cartPreview').innerHTML += '<li class="list-group-item justify-content-between d-flex"><h5>Total: </h5><h5 style="color:red;">$' + cartPriceNum + '</h5></li>';
+				
 			}
 
 			function goStoreFront(){
 				document.getElementById('storefront').style.display = "block";
 				document.getElementById('cartPage').style.display = "none";
+
 			}
 
 
