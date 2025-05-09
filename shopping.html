@@ -4,6 +4,7 @@
 	<HEAD>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+		<script src="https://kit.fontawesome.com/dfd469d1c6.js" crossorigin="anonymous"></script>
 	</HEAD>
 	<BODY style="background: #ff7abd;">
 	<DIV class="container">
@@ -11,17 +12,16 @@
 		
 		<DIV id="storefront">
 
-		<button class="btn btn-primary position-relative" onclick="goToCart()">Cart 
+		<button class="btn btn-primary position-relative" onclick="goToCart()"><i class="fa-solid fa-cart-shopping"></i> 
 			<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartBadgeNum">0</span>
 			<br><span class="badge badge-danger" id="cartPriceNum">$0</span></button>
 
-		<h1 class="text-center">The Awesome Store</h1>
-		<div id="placegoldmessage"></div>
+		<h1 class="text-center" style="margin-top: 1rem;">The Awesome Store</h1>
 
-		<div class="row g-3 justify-content-center">
+		<div class="row g-3 justify-content-center" style="margin-top: 1rem;">
 
 		<div class="card col-md-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/Cheetos.jpg" style="width: 17rem"><br>
+  			<div class="card-body text-center"><img src="images/Cheetos.jpg" style="width: 100%"><br>
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Cheetos</span><br>
   				<button id="itembutton1" class="btn btn-secondary" onclick="addItemToCart('Cheetos',1.25,1)">Add To Chart</button>
@@ -32,7 +32,7 @@
   			</div>
   		</div>
 		<div class="card col-md-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/Doritos.jpg" style="width: 17rem"><br>
+  			<div class="card-body text-center"><img src="images/Doritos.jpg" style="width: 100%"><br>
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Doritos</span><br>
   				<button id="itembutton2" class="btn btn-secondary" onclick="addItemToCart('Doritos',1.25,2)">Add To Chart</button>
@@ -43,7 +43,7 @@
   			</div>
   		</div>
 		<div class="card col-md-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/Ruffles.jpg" style="width: 17rem"><br>
+  			<div class="card-body text-center"><img src="images/Ruffles.jpg" style="width: 100%"><br>
   			<span class="itemPrice">$1.25</span><br>
   			<span class="itemName">Ruffle</span><br>
   				<button id="itembutton3" class="btn btn-secondary" onclick="addItemToCart('Ruffles',1.25,3)">Add To Chart</button>
@@ -54,7 +54,7 @@
   			</div>
   		</div>
 		<div class="card col-md-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/Chips Ahoy.jpg" style="width: 17rem"><br>
+  			<div class="card-body text-center"><img src="images/Chips Ahoy.jpg" style="width: 100%"><br>
   			<span class="itemPrice">$1.50</span><br>
   			<span class="itemName">Chips Ahoy</span><br>
   				<button id="itembutton4" class="btn btn-secondary" onclick="addItemToCart('Chips Ahoy',1.50,4)">Add To Chart</button>
@@ -65,7 +65,7 @@
   			</div>
   		</div>
   				<div class="card col-md-3 p-1 m-3">
-  			<div class="card-body text-center"><img src="images/Oreo.jpg" style="width: 17rem"><br>
+  			<div class="card-body text-center"><img src="images/Oreo.jpg" style="width: 100%"><br>
   			<span class="itemPrice">$1.50</span><br>
   			<span class="itemName">Oreo</span><br>
   			<button id="itembutton5" class="btn btn-secondary" onclick="addItemToCart('Oreo',1.50,5)">Add To Chart</button>
@@ -85,8 +85,8 @@
 
 		<DIV id="cartPage" style="display: none;">
 
-			<button class="btn btn-primary" onclick="goStoreFront()">Return To Store</button>
-			<h1 class="text-center">Your Cart <span class="badge text-bg-primary rounded-pill" id="cartPreviwItemNum">0</span></h1>
+			<button class="btn btn-primary" onclick="goStoreFront()"><i class="fa-solid fa-store"></i> Return To Store</button>
+			<h1 class="text-center" style="margin-top: 1rem;">Your Cart <span class="badge text-bg-primary rounded-pill" id="cartPreviwItemNum">0</span></h1>
 			<div class="row g-3 justify-content-center">
 				<ul class="list-group" style="width: 20rem; margin-top: 1rem;" id="cartPreview">
 				</ul>
@@ -96,8 +96,8 @@
 		</DIV>
 
 		<DIV id="checkoutPage" style="display: none;">
-			<button class="btn btn-primary" onclick="goStoreFront()">Return To Store</button>
-			<h1 class="text-center">Checkout</h1>
+			<button class="btn btn-primary" onclick="goStoreFront()"><i class="fa-solid fa-store"></i> Return To Store</button>
+			<h1 class="text-center" style="margin-top: 1rem;">Checkout</h1>
 			<div class="row">
 				<div class="col-md-3" style="margin-top: 1rem;">
 				<h3 class="text-center text-md-start">Your Cart</h3>
@@ -109,55 +109,55 @@
 		<DIV class="col-md-9" style="margin-top: 1rem;">
 			<h3 class="text-center text-md-start">Billing Details</h3>
 		<form id="form1" class="needs-validation was-validated" novalidate><div class="row g-3">
-		<div class="col-sm-6">
+		<div class="col-6">
 			<label class="form-label">First Name</label><input type="text" name="first" class="form-control" required />
 			<div class="invalid-feedback">
       			Please enter your first name
     		</div>
 		</div>
-		<div class="col-sm-6">
+		<div class="col-6">
 			<label class="form-label">Last Name</label><input type="text" name="last" class="form-control" required />
 			<div class="invalid-feedback">
       			Please enter your last name
     		</div>
 		</div>
 
-		<div class="col-sm-8">
+		<div class="col-8">
 		<label class="form-label">Email</label><input type="email" name="" class="form-control" required />
 			<div class="invalid-feedback">
       			Wrong or Empty or Invalid Email Address
     		</div>
     	</div>
 
-		<div class="col-sm-8">
+		<div class="col-8">
 		<label class="form-label">Address</label><input type="text" name="" class="form-control" required />
 			<div class="invalid-feedback">
       			Wrong or Empty Address
     		</div>
     	</div>
 
-    	<div class="col-sm-4">
+    	<div class="col-4">
 		<label class="form-label">Zip Code</label><input type="tel" name="" class="form-control" maxlength="5" pattern="96950" required />
 			<div class="invalid-feedback">
       			Wrong or Empty Zip Code
     		</div>
     	</div>
 
-		<div class="col-sm-12">
+		<div class="col-12">
 		<label class="form-label">Card Number</label><input type="tel" name="" class="form-control" id="typedccnum" maxlength="19" pattern="5184 8233 2454 8173" required />
 			<div class="invalid-feedback">
       			Wrong or Empty Card Number
     		</div>
     	</div>
 
-		<div class="col-sm-4">
+		<div class="col-4">
 		<label class="form-label">Security Code</label>
 		<input type="tel" name="" maxlength="3" oninput="this.value = this.value.replace(/[^0-9]/g, '')" class="form-control" pattern="563" required />
 			<div class="invalid-feedback">
       			Wrong or Empty Security Code
     		</div>
 		</div>	
-			<div class="col-sm-4">
+			<div class="col-4">
 				<label class="form-label">Expiration Month</label>
 			<input class="form-control" pattern="August" list="Month" required />
 			<datalist id="Month">
@@ -178,7 +178,7 @@
       			Wrong Expiration Month
     		</div>
 			</div>
-			<div class="col-sm-4">
+			<div class="col-4">
 					<label class="form-label">Expiration Year</label>
 			<input class="form-control" pattern="2027" list="Year" required />
 			<datalist id="Year">
@@ -230,7 +230,6 @@
 			}
 
 			function addMoreItemtoCart(item, whichbutton){
-			document.getElementById('placegoldmessage').innerHTML = " ";
 				cartItemsList.forEach(object => {
 					if (object.name == item) {
 						object.quantity++;
@@ -240,7 +239,6 @@
 				});
 			}
 			function subLessItemtoCart(item, whichbutton){
-			document.getElementById('placegoldmessage').innerHTML = " ";
 				cartItemsList.forEach((object, index) => {
 					if (object.name == item) {
 						if (object.quantity == 1) {
@@ -332,7 +330,7 @@
 		})()
 
 			function sendpaymemt(){
-				document.getElementById('page1').innerHTML = '<DIV id="finalPage" class="text-center row g-3 justify-content-center"><h1>Thanks For Shopping With Us!</h1><h3>Here are your items:</h3><div id="finalItemDisplay"></div><a href="shopping.html"><button class="btn btn-primary">Next Person</button></a></DIV>';
+				document.getElementById('page1').innerHTML = '<DIV id="finalPage" class="text-center row g-3 justify-content-center"><h1>Thanks For Shopping With Us!</h1><h3 style="margin-top: 1rem;">Here are your items:</h3><div id="finalItemDisplay" style="margin-top: 1rem;"></div><a href="shopping.html"><button class="btn btn-primary" style="margin-top: 1rem;">Next Person</button></a></DIV>';
 
 				document.getElementById('finalItemDisplay').innerHTML = " ";
 				cartItemsList.forEach(object => {
